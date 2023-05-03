@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<style>
+		.form-box {
+			margin-top: 1rem;
+			padding-top: 2rem;
+		}
+
+		label {
+			font-weight: bold;
+		}
+
+		#billing_details {
+			display: none;
+		}
+
+		.room_status_div {
+			margin-top: 2em;
+
+		}
+
+		div>.card {
+			display: inline;
+		}
+
+		th,
+		td {
+			text-align: center;
+			padding: 0px;
+			margin: 0px;
+			font-weight: bold;
+		}
+
+		.custom-control{
+			min-height:25px;
+			margin-top: 5px;
+			margin-bottom:22px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+
+				<table class="table table-bordered table-sm w-100">
+					<thead class="bg-dark text-white">
+						<th>25-4-23</th>
+						<th>25-4-23</th>
+						<th>25-4-23</th>
+						<th>25-4-23</th>
+						<th>25-4-23</th>
+						<th>25-4-23</th>
+					</thead>
+					<tbody>
+						<td>10</td>
+						<td>20</td>
+						<td>30</td>
+						<td>10</td>
+						<td>20</td>
+						<td>30</td>
+					</tbody>
+				</table>
+
+				<table class="table table-bordered table-sm w-100">
+					<thead class="bg-dark text-white">
+						<th>Rooms Available</th>
+						<th>Rooms Booked</th>
+						<th>Total Rooms</th>
+					</thead>
+					<tbody>
+						<td class="text-dark">10</td>
+						<td class="bg-warning">20</td>
+						<td class="">30</td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="container-fluid form-box shadow p-5 mb-5 rounded">
+					<h4 class="border border-top-0 border-left-0 border-right-0 border-bottom-1 py-2"> Customer Details
+					</h4>
+					<div class="row">
+						<div class="col-md-4">
+
+							<div class="form-group">
+								<label for="mobile">Mobile</label>
+								<input type="text" class="form-control form-control-sm" name="mobile" id="mobile"
+									placeholder="Mobile" />
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="invisible">checkbtn</label>
+								<button class="btn btn-primary btn-sm">Check</button>
+							</div>
+						</div>
+
+						<div class="col-md-4"></div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="first_name">First Name</label>
+								<input type="text" class="form-control form-control-sm" name="First Name"
+									id="first_name" placeholder="First Name" />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="first_name">Last Name</label>
+								<input type="text" class="form-control form-control-sm" name="Last Name" id="last_name"
+									placeholder="Last Name" />
+							</div>
+						</div>
+						<div class="col-md-4"></div>
+
+						<div class="col-md-12">
+							<div class="form-check">
+								<label for="alter_billing_info">
+									<input type="checkbox" onclick="billingDetails()" class="form-check-input"
+										name="alter_billing_info" id="alter_billing_info" />
+									Add Billing Details
+								</label>
+							</div>
+						</div>
+
+					</div>
+				</div> <!-- form-box 1 end -->
+
+				<div class="container-fluid form-box shadow p-5 mb-5 rounded" id="billing_details">
+					<h4 class="border border-top-0 border-left-0 border-right-0 border-bottom-1 py-2"> Billing Details
+					</h4>
+					<div class="row">
+
+						<div class="col-6">
+							<div class="form-group">
+								<label>Billing Name</label>
+								<input type="text" name="billing_name" id="billing_name" placeholder="Billing Name"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+
+						<div class="col-6">
+							<div class="form-group">
+								<label>GSTIN</label>
+								<input type="text" name="gstin" id="gstin" placeholder="GSTIN"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+
+						<div class="col-4">
+							<div class="form-group">
+								<label>Contact</label>
+								<input type="text" name="billing_name" id="billing_number" placeholder="Contact"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+
+						<div class="col-8">
+							<div class="form-group">
+								<label>Address</label>
+								<input type="text" name="address" id="address" placeholder="Address"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-6">
+
+				<div class="container-fluid form-box shadow p-5 mb-5 rounded">
+					<h4 class="border border-top-0 border-left-0 border-right-0 border-bottom-1 py-2"> Booking Details
+					</h4>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Check-In Date</label>
+								<input type="date" name="checkin_date" id="checkin_date"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Check-In Time</label>
+								<input type="time" name="checkin_time" id="checkin_time"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+						<div class="col-md-4"></div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label> Check-Out Date</label>
+								<input type="date" name="checkout_date" id="checkout_date"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label> Check-Out Time</label>
+								<input type="time" name="checkout_time" id="checkout_time"
+									class="form-control form-control-sm" />
+							</div>
+						</div>
+						<div class="col-md-4"></div>
+
+						<div class="col-md-6">
+							<div class="input-group input-group-sm mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">Double Bed Room</span>
+								</div>
+								<input type="number" min="0" class="form-control form-control-sm" placeholder="Quantity"
+									aria-label="eco" aria-describedby="basic-addon1">
+							</div>
+						
+
+							<div class="input-group input-group-sm mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">3 Bed Room</span>
+								</div>
+								<input type="number" min="0" class="form-control form-control-sm" placeholder="Quantity"
+									aria-label="eco" aria-describedby="basic-addon1">
+							</div>
+
+							<div class="input-group input-group-sm mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">7 Bed Dormitory</span>
+								</div>
+								<input type="number" min="0" class="form-control form-control-sm" placeholder="Quantity"
+									aria-label="eco" aria-describedby="basic-addon1">
+							</div>
+
+							<div class="input-group input-group-sm mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">11 Bed Dormitory</span>
+								</div>
+								<input type="number" min="0" class="form-control form-control-sm" placeholder="Quantity"
+									aria-label="eco" aria-describedby="basic-addon1">
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="double_ac" name="double_ac">
+								<label class="custom-control-label" for="double_ac">A/C</label>
+							</div>
+
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="3bed_ac" name="3bed_ac">
+								<label class="custom-control-label" for="3bed_ac">A/C</label>
+							</div>
+
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="7bed_ac" name="7bed_ac">
+								<label class="custom-control-label" for="7bed_ac">A/C</label>
+							</div>
+
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="11bed_ac" name="11bed_ac">
+								<label class="custom-control-label" for="11bed_ac">A/C</label>
+							</div>
+						</div>
+
+						<div class="col-md-3"></div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+
+
+		</div>
+	</div>
+	</div>
+
+	<script>
+		var datepickerin = document.getElementById('checkin_date');
+		var datepickerout = document.getElementById('checkout_date');
+		datepickerin.min = new Date().toISOString().split("T")[0];
+		datepickerout.min = new Date().toISOString().split("T")[0];
+		var billing_checkbox = document.getElementById('alter_billing_info');
+		var billing_details_form = document.getElementById('billing_details');
+
+		function billingDetails() {
+			if (billing_checkbox.checked) {
+				billing_details_form.style.display = 'block';
+			}
+			else {
+				console.log('hi?');
+				billing_details_form.style.display = 'none';
+			}
+
+		}
+
+	</script>
+</body>
+
+</html>

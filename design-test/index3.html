@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+        .no-decoration-anchor{
+            text-decoration: none !important;
+        }
+
+        .panel-heading{
+            padding: 3rem 2rem 3rem 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+  </style>
+</head>
+<body>
+  
+<div class="container" id='selection_form'>
+    <h3 class="offset-md-3"> Entity Onboarding Setup </h3>
+    <div class="row">
+
+        <div class="col-md-4"></div>
+
+        <div class="col-md-2">
+            <a href='javascript:;' class='no-decoration-anchor' onclick="loadForm('new');">
+            <div class="panel panel-default panel-success">
+                <div class="panel-heading">
+                    New Entity
+                </div>
+                
+            </div>
+            </a>
+        </div>
+
+        <div class="col-md-2">
+            <a href='javascript:;' class='no-decoration-anchor' onclick="loadForm('existing');">
+            <div class="panel panel-default panel-warning">
+                <div class="panel-heading">
+                    Exiting Entity
+                </div>
+                
+            </div>
+            </a>
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+      
+    </div> <!-- end of #selection_form container -->
+
+    <div class='container' id='new_entity_form' style="display:none;">
+        <h3> Create New Entity </h3>
+        <form method='post'>
+            <div class='row'>
+
+                <div class='col-md-2'></div>
+
+                <div class='col-md-3'>
+
+                    <div class='form-group'>
+                        <label for='entity_code'>Entity Code</label>
+                        <input type='text' class='form-control input-sm' name='entity_code' id='entity_code' placeholder="" />
+                    </div>  
+
+                    <div class='form-group'>
+                        <label for='entity_name'>Entity Name</label>
+                        <input type='text' class='form-control input-sm' name='entity_name' id='entity_name' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='entity_logo'>Entity Logo</label>
+                        <input type='file' class='form-control input-sm' name='entity_logo' id='entity_logo'  />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='company_url'>Company URL</label>
+                        <input type='text' class='form-control input-sm' name='company_url' id='company_url' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='app_title'>App Title</label>
+                        <input type='text' class='form-control input-sm' name='app_title' id='app_title' placeholder="" />
+                    </div>  
+
+                    <div class='form-group'>
+                        <label for='project_group'>Project Group</label>
+                            <select class='form-control input-sm' name="project_group">
+                                <option value=""> Select Project Group</option>                                
+                                <option value="1"> Demand Planning</option>
+                                <option value="2"> Order Management</option>
+                                <option value="3"> Master Data Management</option>                                
+                            </select>
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='process_admin'>Process Admin</label>
+                        <select class='form-control input-sm' name="project_group">
+                            <option value=""> Select Process Admin</option>                                
+                            <option value="1">User 1</option>
+                            <option value="2">User 2</option>
+                            <option value="3">User 3</option>                                
+                        </select>
+                    </div> 
+                    
+                </div>
+                <!-- 2nd column containting form controls -->
+                <div class='col-md-3'>
+
+                    <div class='form-group'>
+                        <label for='db_server_name'>DB Server Name</label>
+                        <input type='text' class='form-control input-sm' name='db_server_name' id='db_server_name' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='db_name'>Database Name</label>
+                        <input type='text' class='form-control input-sm' name='db_name' id='db_name' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='db_username'>Database Username</label>
+                        <input type='text' class='form-control input-sm' name='db_username' id='db_username' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='db_password'>Database Password</label>
+                        <input type='password' class='form-control input-sm' name='db_password' id='db_password' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='database'>Database</label>
+                        <input type='text' class='form-control input-sm' name='database' id='database' placeholder="" />
+                    </div> 
+
+                    <div class='form-group'>
+                        <label for='upload_path'>Upload Path</label>
+                        <input type='text' class='form-control input-sm' name='upload_path' id='upload_path' placeholder="" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for='next' class="invisible">NEXT Button</label><br/>
+                        <button type="button" name="next" id="next" class="btn btn-primary">NEXT STEP </button>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4"></div>
+
+            </div>
+        </form>
+    </div> <!-- end of new_entity_form -->
+
+    <div class='container' id='existing_entity_form' style="display:none;">
+        <h3> Onboard Existing Entity </h3>
+        <form method='post'>
+
+            <div class='row'>
+
+                    <div class="col-md-2"></div>
+
+                    <div class="col-md-4"></div>
+
+                    <div class="col-md-6"></div>
+            </div>
+
+        </form>
+    </div> <!-- end of existing_entity_form -->
+
+<script>
+            
+
+    
+        </script>
+</body>
+</html>

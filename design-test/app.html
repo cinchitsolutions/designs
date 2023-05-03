@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+	html{
+		margin: 0%;
+		padding:0%;
+	}
+
+	.container{
+		margin-top: 25px;
+		border: 1px solid grey;
+		padding-top: 30px;
+		padding-bottom: 20px;
+		padding-left:25px;
+		border-radius:20px;
+	}
+  </style>
+  
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<!-- Brand -->
+	<a class="navbar-brand" href="#">Rosanne</a>
+  
+	<!-- Links -->
+	<!-- <ul class="navbar-nav">
+	  <li class="nav-item">
+		<a class="nav-link" href="#">Link 1</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="#">Link 2</a>
+	  </li> -->
+  
+	  <!-- Dropdown -->
+	  <!-- <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+		  Dropdown link
+		</a>
+		<div class="dropdown-menu">
+		  <a class="dropdown-item" href="#">Link 1</a>
+		  <a class="dropdown-item" href="#">Link 2</a>
+		  <a class="dropdown-item" href="#">Link 3</a>
+		</div>
+	  </li> -->
+	</ul>
+  </nav>
+
+<!-- create new message container  -->
+<div class="container">
+	<h3 class="py-2"> Candidate Details: </h3>
+  	<div class="row">
+		<div class="col-md-2">
+			<div class="form-group">
+				<input class="form-control" onkeyup="updateValues()" value="" type="text" name="studentName" id="studentName" placeholder="Name"/>
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div class="form-group">
+				<select class="form-control mr-sm-2" onchange="updateValues()" required name="msgGroup" id="msgGroup">
+					<option value="flow">Flow</option>
+					<option value="faq">FAQ</option>
+					<option value="closing">Closing</option>
+					<option value="status">Status</option>
+				</select>
+			</div>
+		</div>
+  	</div>
+</div>
+
+<!-- create new message container  -->
+<!-- <div class="container">
+	<h3> Add Messages </h3>
+  	<div class="row">
+
+		<div class="col-md-4">
+			<div class="form-group">
+				<input class="form-control" type="text" name="studentName" id="studentName" placeholder="New Message"/>
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div class="form-group">
+				<select class="form-control" required name="msgGroup" id="msgGroup">
+					<option value="">Add To Group</option>
+					<option value="1">Flow</option>
+					<option value="2">FAQ</option>
+					<option value="3">Closing</option>
+					<option value="">Closing</option>
+				</select>
+			</div>
+		</div>
+
+  	</div>
+</div> -->
+
+<div class="container">
+	<h3 class='my-3'> Responses: </h3>
+	<div class="list-group" id="listingDiv">
+		 
+	</div>
+
+</div>
+
+<!-- footer -->
+<!-- <div class="container">
+	
+</div> -->
+
+<script>
+	var name="";
+	var htmlObj ="";
+	var group = document.getElementById('msgGroup');
+	var template1 = "<a href='javascript:void(0);' class='list-group-item list-group-item-action test1' onclick='copyToClipboard(this)'>";
+	var template2 = "</a>";
+	var proctor = "Rajashree";
+
+	var myObj = '';
+
+	function setJson(){
+		const date = new Date()
+		const options = {
+		hour: 'numeric',
+		minute: 'numeric',
+		hour12: true
+		};
+		const time = new Intl.DateTimeFormat('en-US', options).format(date);
+
+		myObj = {
+
+		"1":{
+			"group":"flow",
+			"msg":"Hi, "+name+" welcome to the exam !"
+		},
+		"2":{
+			"group":'flow',
+			"msg":"I'm "+proctor+", i'll be your proctor for this exam"
+		},
+		"3":{
+			"group":"flow",
+			"msg":"Dear "+name+", All the best for your exam"
+		},
+		"5":{
+			"group":"faq",
+			"msg":name+", Calculator is allowed for Section #1 of the exam only."
+		},
+		"6":{
+			"group":"faq",
+			"msg": name+", Please remove any and all electronics gadget from your surrounding area."
+		},
+		"7":{
+			"group":"faq",
+			"msg": name+", extra monitors are not allowed !"
+		},
+		"8":{
+			"group":"faq",
+			"msg":"Dear "+name+", your ID produced is blurred out, kindly redo the verification"
+		},
+		"9":{
+			"group":"closing",
+			"msg":"Thank you and Congrats "+name+", for completing your session successfully. It was a pleasure proctoring for you. Good Bye !"
+		},
+		"10":{
+			"group":"status",
+			"msg":"Candidate "+name+" logged in @ "+ time
+		},
+		"11":{
+			"group":"status",
+			"msg":"Candidate "+name+" started test @ "+ time
+		},
+		"12":{
+			"group":"status",
+			"msg":"Candidate "+name+" completed test @ "+ time
+		},
+		};
+}
+
+	function updateValues(){
+		name = document.getElementById('studentName').value;
+		htmlObj ="";
+
+		setJson();
+		loadData();
+	}
+
+	function loadData(){
+		for (const key in myObj) {
+			if (myObj.hasOwnProperty(key)) {
+				const element = myObj[key];
+				// console.log(element.group);
+				// console.log(group.value);
+				if(element.group==group.value)
+					htmlObj = htmlObj + template1 + element.msg +template2;
+			}
+		}
+		document.getElementById('listingDiv').innerHTML = htmlObj;
+	}
+
+	function copyToClipboard(messageObj){
+		
+		const collection = document.getElementsByTagName("a");
+		for (let i = 0; i < collection.length; i++) {
+			collection[i].style.fontWeight = 'Normal';
+		}
+
+		messageObj.style.fontWeight = 'Bold';
+		navigator.clipboard.writeText(messageObj.innerHTML);
+	// alert("Copied the text: " + messageObj.innerHTML);
+	}
+
+	setJson();
+	loadData(); 
+
+  </script>
+
+</body>
+</html>
